@@ -26,6 +26,8 @@ dependencies {
     compileOnly "org.projectlombok:lombok:1.16.10"
     compile "com.google.guava:guava:19.0"
     compile "org.springframework.boot:spring-boot-starter-web"
+    compile 'org.springframework.social:spring-social-twitter:1.1.0.RELEASE'
+
     compile "io.javaslang:javaslang:2.0.4"
     // testCompile "org.testng:testng:6.9.13.6"
     testCompile "org.springframework.boot:spring-boot-starter-test"
