@@ -1,13 +1,38 @@
-apply plugin: 'idea'
+buildscript {
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.2.RELEASE")
+    }
+    repositories {
+        jcenter()
+    }
+}
+
 apply plugin: 'java'
 apply plugin: 'application'
+apply plugin: 'org.springframework.boot'
 
 task wrapper(type: Wrapper) {
     gradleVersion = '3.1'
 }
 
-task zip(type:Zip) {
-    from ('.')
+mainClassName = 'com.github.ystromm.twitter_service.Main'
+
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compileOnly "org.projectlombok:lombok:1.16.10"
+    compile "com.google.guava:guava:19.0"
+    compile "org.springframework.boot:spring-boot-starter-web"
+    compile "io.javaslang:javaslang:2.0.4"
+    // testCompile "org.testng:testng:6.9.13.6"
+    testCompile "org.springframework.boot:spring-boot-starter-test"
+}
+
+task zip(type: Zip) {
+    from('.')
     destinationDir file("build")
     exclude '**/build'
     exclude '.git'
