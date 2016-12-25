@@ -10,6 +10,7 @@ buildscript {
 apply plugin: 'java'
 apply plugin: 'application'
 apply plugin: 'org.springframework.boot'
+apply plugin: 'groovy'
 
 task wrapper(type: Wrapper) {
     gradleVersion = '3.1'
