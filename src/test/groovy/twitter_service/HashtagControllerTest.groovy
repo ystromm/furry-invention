@@ -9,7 +9,7 @@ import org.springframework.social.twitter.api.Twitter
 class HashtagControllerTest extends spock.lang.Specification {
     def twitter = Mock(Twitter)
     def searchOperations = Mock(SearchOperations)
-    def hashtagController = new HashtagController(twitter)
+    def hashtagController = new HashtagController(twitter, 2)
 
     def setup() {
         1 * twitter.searchOperations() >> searchOperations
@@ -55,6 +55,13 @@ class HashtagControllerTest extends spock.lang.Specification {
         searchOperations.search(_) >> searchResults([tweet("apa kaka apa kaka")])
         expect:
         hashtagController.getWordsForHashtag("#orungatang") == [WordCount.of("apa", 2), WordCount.of("kaka", 2)]
+    }
+
+    def "should return the two most used words with counts"() {
+        given:
+        searchOperations.search(_) >> searchResults([tweet("apa apa kaka apa kaka gurka")])
+        expect:
+        hashtagController.getWordsForHashtag("#orungatang") == [WordCount.of("apa", 3), WordCount.of("kaka", 2)]
     }
 
     def "should strip punctuation"() {
