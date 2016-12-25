@@ -1,11 +1,12 @@
 package com.github.ystromm.furry_invention.twitter_service;
 
+import lombok.AllArgsConstructor;
 import lombok.NonNull;
 import lombok.Value;
 
-@Value(staticConstructor = "wordCount")
+@Value(staticConstructor = "of")
 public class WordCount {
     @NonNull
     private final String word;
-    private final int count;
+    private final long count;
 }
