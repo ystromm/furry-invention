@@ -41,5 +41,5 @@ task zip(type: Zip) {
     exclude ".idea"
     exclude ".gradle"
     exclude "*.zip"
-    archiveName "kodtest.zip"
+    archiveName "furry-invention.zip"
 }
