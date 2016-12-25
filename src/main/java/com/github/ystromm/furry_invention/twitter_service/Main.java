@@ -1,4 +1,4 @@
-package com.github.ystromm.twitter_service;
+package com.github.ystromm.furry_invention.twitter_service;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

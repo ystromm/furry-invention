@@ -15,7 +15,7 @@ task wrapper(type: Wrapper) {
     gradleVersion = '3.1'
 }
 
-mainClassName = 'com.github.ystromm.twitter_service.Main'
+mainClassName = 'com.github.ystromm.furry_invention.twitter_service.Main'
 
 
 repositories {
@@ -27,6 +27,8 @@ dependencies {
     compile "com.google.guava:guava:19.0"
     compile "org.springframework.boot:spring-boot-starter-web"
     compile 'org.springframework.social:spring-social-twitter:1.1.0.RELEASE'
+    compile "org.codehaus.groovy:groovy-all:2.4.1"
+    testCompile "org.spockframework:spock-core:1.0-groovy-2.4"
 
     compile "io.javaslang:javaslang:2.0.4"
     // testCompile "org.testng:testng:6.9.13.6"

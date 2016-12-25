@@ -1,7 +1,8 @@
-package com.github.ystromm.twitter_service;
+package com.github.ystromm.furry_invention.twitter_service;
 
 import com.google.common.collect.Lists;
 import org.springframework.social.connect.ConnectionRepository;
+import org.springframework.social.twitter.api.SearchOperations;
 import org.springframework.social.twitter.api.SearchParameters;
 import org.springframework.social.twitter.api.SearchResults;
 import org.springframework.social.twitter.api.Twitter;
@@ -16,19 +17,17 @@ import java.util.Collection;
 public class HashtagController {
     private Twitter twitter;
 
-    private ConnectionRepository connectionRepository;
-
     @Inject
-    public HashtagController(Twitter twitter, ConnectionRepository connectionRepository) {
+    public HashtagController(Twitter twitter) {
         this.twitter = twitter;
-        this.connectionRepository = connectionRepository;
     }
 
 
     @RequestMapping(path = "/hashtag")
-    public Collection<String> getHashtag() {
-        SearchParameters searchParameters = new SearchParameters("#brexit");
-        final SearchResults searchResults = twitter.searchOperations().search(searchParameters);
+    public Collection<String> getWordsForHashtag() {
+        final SearchParameters searchParameters = new SearchParameters("#brexit");
+        final SearchOperations searchOperations = twitter.searchOperations();
+        final SearchResults searchResults = searchOperations.search(searchParameters);
         return Lists.transform(searchResults.getTweets(), tweet -> tweet.getText());
     }
 }
